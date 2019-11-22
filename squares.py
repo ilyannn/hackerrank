@@ -5,12 +5,14 @@ def read_ints():
 
 
 def max_sum(M, X):
-    print(M, X)
+#    print(M, X)
     covers = set([0])
 
     for x in X:
-        for s in covers.copy():
-            for v in x:
+        old_covers = covers
+        covers = set()
+        for v in x:
+            for s in old_covers:
                 covers.add((s + v * v) % M)
 
     return max(covers)
